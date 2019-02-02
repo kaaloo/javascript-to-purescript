@@ -4,10 +4,13 @@
   "private": true,
   "version": "2.0.0",
   "scripts": {
-    "clean": "rimraf bower_components && rimraf output && rimraf .psc* && rimraf .pulp-cache",
+    "clean": "rimraf output && rimraf .psc* && rimraf .pulp-cache",
     "install": "psc-package install",
     "build": "pulp --psc-package build",
     "exec": "pulp --psc-package run",
-    "all": "npm run clean && npm run install && npm run build && npm run exec"
+    "all": "yarn && yarn build && yarn run exec"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.3"
   }
 }
