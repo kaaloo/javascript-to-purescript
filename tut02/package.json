@@ -4,7 +4,7 @@
   "private": true,
   "version": "2.0.0",
   "scripts": {
-    "clean": "rimraf output && rimraf .psc* && rimraf .pulp-cache",
+    "clean": "rimraf output && rimraf .psc* && rimraf .pulp-cache && rimraf node_modules",
     "install": "psc-package install",
     "build": "pulp --psc-package build",
     "exec": "pulp --psc-package run",

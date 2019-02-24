@@ -36,7 +36,13 @@ applyDiscount price discount =
   (\cost -> (extract $ percentToFloat discount)  #
     (\savings -> cost - cost * savings))
 
--- Bonus Example: For those who are familar with Monads,  Besides using oridinary
+applyDiscount'' :: String -> String -> Box (Box Number)
+applyDiscount'' price discount =
+  moneyToFloat price #
+  map (\cost -> percentToFloat discount #
+        map (\savings -> cost - cost * savings))
+
+-- Bonus Example: For those who are familar with Monads,  Besides using ordinary
 -- functions, these bind operations (>>=) are perhaps the more canonical approach
 -- for solving applyDiscount. We'll cover them in a later tutorial
 applyDiscount' :: String -> String -> Number

@@ -61,6 +61,17 @@ getPort' =
   pure
 
 
+getPort'' :: Effect Port
+getPort'' = do
+  port <- (try $ readTextFile UTF8 pathToFile)
+  parse port
+  where
+    parse = 
+      chain parsePort >>> 
+      chain portInRange >>> 
+      either (\_ -> defaultPort) identity >>>
+      pure
+
 main :: Effect Unit
 main = do
   log "Use chain for composable error handling with nested Eithers"
