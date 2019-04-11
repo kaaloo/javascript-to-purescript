@@ -69,8 +69,19 @@ main = do
      # fork (\e → Console.error $ s <> "error - " <> e) (\p → Console.log (s <> p))
 
   void $ launchAff $
+    let s = "\nUse ado notation:\n"
+    in
+      ado
+        p1 <- dbFind 20
+        p2 <- dbFind 8
+      in reportHeader p1 p2
+      # fork (\e → Console.error $ s <> "error - " <> e) (\p → Console.log (s <> p))    
+
+  void $ launchAff $
     let s = "\nRun an invalid record query:\n"
     in
      -- id 3 is invalid
      (\p1 p2 → reportHeader p1 p2) <$> (dbFind 8) <*> (dbFind 3)
      # fork (\e → Console.error $ s <> "error - " <> e) (\p → Console.log p)
+
+
